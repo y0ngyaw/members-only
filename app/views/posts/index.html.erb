@@ -1,0 +1,17 @@
+<h1>Posts</h1>
+
+<% @posts.each do |post| %>
+	Title: <%= post.title %><br>
+	Body: <%= post.body %><br>
+	<% if logged_in? %>
+		Author Name: <%= post.post_owner(post) %></h3>
+	<% end %>
+	<hr><br>
+<% end %>
+
+<% if logged_in? %>
+	<%= link_to 'Logout', logout_path, :method => :delete %>
+<% else %>
+	<%= link_to 'Login', login_path %>
+<% end %>
+
